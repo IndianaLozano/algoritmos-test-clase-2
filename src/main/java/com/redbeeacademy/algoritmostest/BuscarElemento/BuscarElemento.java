@@ -9,7 +9,7 @@ public class BuscarElemento {
         boolean encontrado = false;
         Integer contador = 0;
 
-        while(!encontrado && contador<lista.size()){
+        while(!encontrado && contador < lista.size()){
             if(buscado == lista.get(contador)){
                 encontrado = true;
             }

@@ -1,6 +1,10 @@
 package com.redbeeacademy.algoritmostest.Lista.EjercicioCine;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /*
 Un cine de un pueblo nos pide que generemos una aplicacion para controlar las personas de una cola.
@@ -23,22 +27,40 @@ Tenemos la clase Persona, donde vamos a usarla para modelar edad, y las propieda
 
 
 public class Cine {
-
     public static double cantidadTotalRecaudada(List<Persona> personas){
         double cantidadTotal = 0;
-        //TODO -> implement me
+        List<Persona> people = new ArrayList<Persona>(personas);
+        people = people.stream().filter(value -> value != null).collect(Collectors.toList());
+        for(int i = 0; i < people.size(); i++) {
+            if(people.get(i).getEdad() >= 5 && people.get(i).getEdad() <= 10){
+                cantidadTotal += 100;
+            }else if (people.get(i).getEdad() > 10 && people.get(i).getEdad() < 18){
+                cantidadTotal += 150;
+            }else if (people.get(i).getEdad() > 17){
+                cantidadTotal += 200;
+            }
+        }
         return cantidadTotal;
     }
 
     public static Integer cantidadPersonas(List<Persona> personas){
         Integer cantidadPersonas = 0;
-        //TODO -> implement me
-        return cantidadPersonas;
+        List<Persona> people = new ArrayList<Persona>(personas);
+        people = people.stream().filter(value -> value != null).collect(Collectors.toList());
+        return cantidadPersonas = people.size();
     }
 
-    public static double promedioEdad(List<Persona> personas){
+    public static double promedioEdad(List<Persona> personas) {
         double promedio = 0;
-        //TODO -> implement me
-        return promedio;
+        List<Persona> people = new ArrayList<Persona>(personas);
+        people = people.stream().filter(value -> value != null).collect(Collectors.toList());
+        int i = 0;
+        double suma = 0;
+        while (i < people.size()) {
+            suma += people.get(i).getEdad();
+            i++;
+        }
+        int temp = (int) ((suma / people.size()) * 100.0);
+        return ((double) temp) / 100.0;
     }
 }
